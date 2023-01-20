@@ -7,9 +7,9 @@ import java.util.Scanner;
 public class CouponCollector {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        System.out.printf("How many coupons?    ");
+        System.out.print("How many coupons?    ");
         int nCoupons = input.nextInt();
-        System.out.printf("How many trials?     ");
+        System.out.print("How many trials?     ");
         int nTrials = input.nextInt();
         Random r = new Random();
         for (int trial = 0; trial < nTrials; trial++) {
@@ -18,9 +18,7 @@ public class CouponCollector {
             while (collected.size() < nCoupons) {
                 total_coupons++;
                 int coupon = r.nextInt(nCoupons);
-                if (!collected.contains(coupon)) {
-                    collected.add(coupon);
-                }
+                collected.add(coupon);
             }
             System.out.printf("Total Coupons Collected: %d, Distinct Coupons: %d\n", total_coupons, nCoupons);
         }
