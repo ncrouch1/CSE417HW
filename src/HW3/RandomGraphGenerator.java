@@ -39,7 +39,6 @@ public class RandomGraphGenerator {
         }
         // loop over all vertices
         for (int vertex = 0; vertex < n; vertex++) {
-            Random r = new Random();
             // get the connections of the vertices
             HashSet<Integer> connections = am.get(vertex);
             // loop over all possible conections
@@ -51,7 +50,7 @@ public class RandomGraphGenerator {
                 // If we pass the stat check add the connection to both vertices connections
                 // We can just use add since it doesn't matter if the set already contains it
                 // it wont add a duplicate and will not overwrite the entry
-                if (r.nextDouble(1.0) <= p) {
+                if (Math.random() <= p) {
                     connections.add(edgeTo);
                     am.get(edgeTo).add(vertex);
                 }
