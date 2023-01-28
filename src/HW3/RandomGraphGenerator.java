@@ -4,7 +4,6 @@ package HW3;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.Random;
 
 import static java.util.Arrays.sort;
 
@@ -13,7 +12,7 @@ public class RandomGraphGenerator {
 
     public static void main(String[] args) {
         int n = 10;
-        double p = 0.0005;
+        double p = 0.2;
         ArrayList<HashSet<Integer>> graph = createGraph(n, p);
         printList(graph);
     }
