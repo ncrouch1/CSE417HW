@@ -4,7 +4,7 @@ import java.util.*;
 
 public class FindGraphDiameter {
     // Comparator used to sort the adjacency matrix in terms of number of edges
-    static class SortBySize implements Comparator<HashSet> {
+    public static class SortBySize implements Comparator<HashSet> {
         @Override
         public int compare(HashSet o1, HashSet o2) {
             return o1.size() - o2.size();
