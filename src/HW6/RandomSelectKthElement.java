@@ -4,42 +4,52 @@ import java.util.*;
 
 public class RandomSelectKthElement {
     public static void main(String[] args) {
+        int n = 50000;
+        int increment = 50000;
         Random r = new Random();
-        int n = 100;
-        int k = r.nextInt(n) + 1;
-        System.out.printf("%d numbers, %dth largest element\n", n, k);
-        ArrayList<Integer> A = new ArrayList<>(n);
-        generateArray(A, n, r);
-        int num = findKthLargestElement(A, r, k);
-        int c = findC(A, r, k);
-        System.out.printf("Comparisons made %d\n", c);
-        Collections.sort(A);
-        assert(A.get(k) == num);
-        System.out.printf("Kth largest element found, %d\nList: ", num);
-        for (int index = 0; index < n - 1; index++) {
-            if (index % 20 == 0 && index != 0) {
-                System.out.println();
+        for (int i = 0; i < 100; i++) {
+            if (i % 10 == 0 && i != 0 && i != 90) {
+                n += increment;
+                System.out.printf("]\n N = %d\n [", n);
+            } else if (i == 0){
+                System.out.printf("N = %d\n[", n);
             }
-            System.out.printf("%d, ", A.get(index));
+            int k = r.nextInt(n) + 1;
+//            System.out.printf("%d numbers, %dth largest element\n", n, k);
+            ArrayList<Double> A = new ArrayList<>(n);
+            generateArray(A, n, r);
+            double num = findKthLargestElement(A, r, k);
+            int c = findC(A, r, k);
+//            System.out.printf("Comparisons made %d\n", c);
+            Collections.sort(A);
+            assert(A.get(k) == num);
+            System.out.printf("%d, ", c);
         }
-        System.out.printf("%d\n", A.get(n-1));
+        System.out.println("]");
+//        System.out.printf("Kth largest element found, %f\nList: ", num);
+//        for (int index = 0; index < n - 1; index++) {
+//            if (index % 20 == 0 && index != 0) {
+//                System.out.println();
+//            }
+//            System.out.printf("%f, ", A.get(index));
+//        }
+//        System.out.printf("%f\n", A.get(n-1));
     }
 
 
-    public static ArrayList<Integer> generateArray(ArrayList<Integer> A, int n, Random r) {
+    public static void generateArray(ArrayList<Double> A, int n, Random r) {
         for (int index = 0; index < n; index++) {
-            A.add(index, r.nextInt(0, n*100));
+            A.add(index, Math.random());
         }
-        return A;
     }
 
-    public static int findKthLargestElement(ArrayList<Integer> A, Random r, int k) {
+    public static double findKthLargestElement(ArrayList<Double> A, Random r, int k) {
         int n = A.size();
-        ArrayList<Integer> s1 = new ArrayList<>();
-        ArrayList<Integer> s2 = new ArrayList<>();
-        ArrayList<Integer> s3 = new ArrayList<>();
-        int x = A.get(r.nextInt(n));
-        for (int i : A) {
+        ArrayList<Double> s1 = new ArrayList<>();
+        ArrayList<Double> s2 = new ArrayList<>();
+        ArrayList<Double> s3 = new ArrayList<>();
+        double x = A.get(r.nextInt(n));
+        for (double i : A) {
             if (i < x) {s1.add(i); continue;}
             if (i > x) {s2.add(i); continue;}
             s3.add(i);
@@ -57,15 +67,15 @@ public class RandomSelectKthElement {
      * Identically this is the same algorithm as the Select implementation. In order to calculate the
      * number of comparisons per n elements I added a count functionality. See below
      */
-    public static int findC(ArrayList<Integer> A, Random r, int k) {
+    public static int findC(ArrayList<Double> A, Random r, int k) {
         // For each round initialize a count variable
         int count = 0;
         int n = A.size();
-        ArrayList<Integer> s1 = new ArrayList<>();
-        ArrayList<Integer> s2 = new ArrayList<>();
-        ArrayList<Integer> s3 = new ArrayList<>();
-        int x = A.get(r.nextInt(n));
-        for (int i : A) {
+        ArrayList<Double> s1 = new ArrayList<>();
+        ArrayList<Double> s2 = new ArrayList<>();
+        ArrayList<Double> s3 = new ArrayList<>();
+        double x = A.get(r.nextInt(n));
+        for (double i : A) {
             // If this comparison is done, only add 1
             if (i < x) {
                 s1.add(i); count++; continue;
