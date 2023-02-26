@@ -30,8 +30,8 @@ public class WeightedIntervalGenerator {
     public static ArrayList<Interval> generateIntervals(int n, int l, int r, int v, Random ra) {
         ArrayList<Interval> intervals = new ArrayList<>(n);
         for (int index = 0; index < n; index++) {
-            int start = ra.nextInt(1, r);
-            int end = start + ra.nextInt(1, l);
+            int start = ra.nextInt(0, r) + 1;
+            int end = start + ra.nextInt(0, l) + 1;
             int value = ra.nextInt(0, v) + 1;
             intervals.add(new Interval(start, end, value));
         }
