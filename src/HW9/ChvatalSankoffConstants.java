@@ -8,11 +8,14 @@ public class ChvatalSankoffConstants {
         gamma * k is less than 0.4. gamma * k is equal to the Expected value of lambda_n_k divided by n
         as the limit of n increases towards infinity. Something to note here is that the Weak law of large
         numbers states that as n increases the expected value approaches the mean. So in our case we are
-        experimenting to find a mean divided by a sample size
+        experimenting to find a mean divided by a sample size. The WLLN requires a sample size greater than or equal
+        to 30.
     */
     public static void main(String[] args) {
         Random random = new Random();
         int gammaK = 0;
+        int n = 30;
+
     }
 
     public static String randomStringGenerator(int n, int k) {
